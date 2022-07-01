@@ -5,11 +5,6 @@ const ul = document.querySelector('ul')
 
 var itensDB = []
 
-deletaTudo.onclick = () => {
-    itensDB = []
-    updateDB()
-}
-
 inserir.onclick = () => {
     if(texto.value != '') {
         setItemDB()
@@ -17,6 +12,7 @@ inserir.onclick = () => {
         alert('Digite Algo!')
     }
 }
+
 function setItemDB() {
     if (itensDB.length >= 20) {
         alert('Limite máximo de 20 itens atingido!')
@@ -56,6 +52,7 @@ function insertItemTela(text, status, i) {
     }
     texto.value = ''
 }
+
 function done(chk, i) {
     if (chk.checked) {
         itensDB[i].status = 'checked'
@@ -68,6 +65,10 @@ function done(chk, i) {
 
 function removeItem(i) {
     itensDB.splice(i, 1)
+    updateDB()
+}
+deletaTudo.onclick = () => {
+    itensDB = []
     updateDB()
 }
 
